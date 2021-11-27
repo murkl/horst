@@ -41,7 +41,7 @@ notify() {
 }
 
 zenity() {
-    /usr/bin/zenity --name="$SCRIPT_ID" --width=280 --height=240 --title='' --text='' --window-icon="$SCRIPT_ICON" "$@" 2>/dev/null
+    /usr/bin/zenity --name="$SCRIPT_ID" --width=300 --height=250 --title='' --text='' --window-icon="$SCRIPT_ICON" "$@" 2>/dev/null
 }
 
 #\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
@@ -102,35 +102,35 @@ main() {
 print_zenity_header() {
 
     # TITLE
-    local txt_title='\t\t\t\t <span font_family="monospace" foreground="#6e6e6e" font="12"><b>'$SCRIPT_TITLE'</b></span>'
+    local txt_title='<span font_family="monospace" foreground="#6e6e6e" font="18"><b>'$SCRIPT_TITLE'</b></span>'
 
     # STATUS
-    local icon_status='  <span font_family="monospace" foreground="#BF616A" font="12">✗</span> '
-    local txt_status='  <span font_family="monospace" foreground="#2E3440" font="9">disabled</span>'
+    local icon_status='<span font_family="monospace" foreground="#BF616A" font="12">✗</span> '
+    local txt_status='<span font_family="monospace" foreground="#2E3440" font="9">disabled</span>'
     if check_horst_enabled; then
-        icon_status='  <span font_family="monospace" foreground="#A3BE8C" font="12">✔</span> '
-        txt_status='  <span font_family="monospace" foreground="#2E3440" font="9">enabled</span>'
+        icon_status='<span font_family="monospace" foreground="#A3BE8C" font="12">✔</span> '
+        txt_status='<span font_family="monospace" foreground="#2E3440" font="9">enabled</span>'
     fi
 
     # SOURCE
     local icon_source=''
     local txt_source=''
     if check_horst_enabled; then
-        icon_source='  <span font_family="monospace" foreground="#EBCB8B" font="12">★</span> '
-        txt_source='  <span font_family="monospace" foreground="#2E3440" font="9">'$(count_sources)' Sources</span>\n'
+        icon_source='<span font_family="monospace" foreground="#EBCB8B" font="12">★</span> '
+        txt_source='<span font_family="monospace" foreground="#2E3440" font="9">'$(count_sources)' Sources</span>'
     fi
 
     # UPDATE
     local icon_update=''
     local txt_update=''
     if check_horst_enabled; then
-        icon_update='  <span font_family="monospace" foreground="#B48EAD" font="12">↺</span> '
+        icon_update='<span font_family="monospace" foreground="#B48EAD" font="12">↺</span> '
         txt_update="$(cat "$HOSTS_VERSION_FILE")"
-        txt_update='  <span font_family="monospace" foreground="#2E3440" font="9">'$txt_update'</span>\n'
+        txt_update='<span font_family="monospace" foreground="#2E3440" font="9">'$txt_update'</span>'
     fi
 
     # Print header
-    echo "$txt_title\n$icon_status$txt_status\n$icon_source$txt_source$icon_update$txt_update"
+    echo "\n$txt_title\n$icon_status $txt_status\n$icon_source $txt_source\n$icon_update $txt_update"
 }
 
 #------------------------------------------------------------
@@ -146,11 +146,11 @@ zenity_main_menu() {
     # ZENITY
     local zenity_result=''
     if check_horst_enabled; then
-        if ! zenity_result="$(zenity --height=240 --list --hide-header --column="" --text="$(print_zenity_header)" --cancel-label='Exit' --ok-label='Ok' 'Update' "$txt_button_status" 'Settings')"; then
+        if ! zenity_result="$(zenity --list --hide-header --column="" --text="$(print_zenity_header)" --cancel-label='Exit' --ok-label='Ok' 'Update' "$txt_button_status" 'Settings')"; then
             exit 0
         fi
     else
-        if ! zenity_result="$(zenity --height=180 --list --hide-header --column="" --text="$(print_zenity_header)" --cancel-label='Exit' --ok-label='Ok' "$txt_button_status" 'Settings')"; then
+        if ! zenity_result="$(zenity --list --hide-header --column="" --text="$(print_zenity_header)" --cancel-label='Exit' --ok-label='Ok' "$txt_button_status" 'Settings')"; then
             exit 0
         fi
     fi
