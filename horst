@@ -102,7 +102,7 @@ main() {
 print_zenity_header() {
 
     # TITLE
-    local txt_title='<span font_family="monospace" foreground="#6e6e6e" font="18"><b>'$SCRIPT_TITLE'</b></span>'
+    local txt_title='<span font_family="monospace" foreground="#494949" font="18"><b>'$SCRIPT_TITLE'</b></span>'
 
     # STATUS
     local icon_status='<span font_family="monospace" foreground="#BF616A" font="12">✗</span> '
@@ -130,7 +130,7 @@ print_zenity_header() {
     fi
 
     # Print header
-    echo "\n$txt_title\n$icon_status $txt_status\n$icon_source $txt_source\n$icon_update $txt_update"
+    echo "\n$txt_title\n\n$icon_status $txt_status\n$icon_source $txt_source\n$icon_update $txt_update"
 }
 
 #------------------------------------------------------------
