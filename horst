@@ -41,7 +41,7 @@ notify() {
 }
 
 zenity() {
-    /usr/bin/zenity --name="$SCRIPT_ID" --width=300 --height=250 --title='' --text='' --window-icon="$SCRIPT_ICON" "$@" 2>/dev/null
+    /usr/bin/zenity --name="$SCRIPT_ID" --width=300 --height=280 --title='' --text='' --window-icon="$SCRIPT_ICON" "$@" 2>/dev/null
 }
 
 #\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
