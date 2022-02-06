@@ -41,7 +41,7 @@ notify() {
 }
 
 zenity() {
-    /usr/bin/zenity --name="$SCRIPT_ID" --width=300 --height=300 --title='' --text='' --window-icon="$SCRIPT_ICON" "$@" 2>/dev/null
+    /usr/bin/zenity --name="$SCRIPT_ID" --width=320 --height=280 --title='' --text='' --window-icon="$SCRIPT_ICON" "$@" 2>/dev/null
 }
 
 #\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
@@ -130,7 +130,7 @@ print_zenity_header() {
     fi
 
     # Print header
-    echo "\n$txt_title\n\n$icon_status $txt_status\n$icon_source $txt_source\n$icon_update $txt_update"
+    echo "\n$txt_title\n\n$icon_status $txt_status\n$icon_source $txt_source\n$icon_update $txt_update\n"
 }
 
 #------------------------------------------------------------
